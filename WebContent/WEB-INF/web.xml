@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>peachProject</display-name>
+ <!-- FrontContoller 서블릿 등록 -->
+  <servlet>
+  	<servlet-name>FrontController</servlet-name>
+  	<servlet-class>controller.FrontController</servlet-class>
+  	<init-param>
+  		<param-name>configName</param-name>
+  		<param-value>/resources/bean.properties</param-value>
+  	</init-param>
+  </servlet>
+  
+  <!-- 
+  		loginForm.do, writeForm.do 와 같은 요청들을 받을,
+  		<url-pattern>*.do</url-pattern>
+  		WAS가 처리할 URL 형식일 뿐!
+  			-> .do는 관례이니, 원하는 방식을 써도 된다.
+  			-> 우리는 .syu 형식으로 사용!
+   -->
+  <!-- .syu로 끝나는 패턴(URL)의 요청을 모두 받겠다. -->
+  <servlet-mapping>
+  	<servlet-name>FrontController</servlet-name>
+  	<url-pattern>*.syu</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+  	<!-- 프로젝트 서버 구동 시 메인 페이지 역할! -->
+    <welcome-file>/WEB-INF/views/main/index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
